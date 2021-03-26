@@ -23,7 +23,6 @@ client_scripts {
 
 client_script {
     "cl_bank.lua",
-    "function.lua",
     "config.lua"
     
 }

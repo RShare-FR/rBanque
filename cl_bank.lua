@@ -6,21 +6,15 @@ Citizen.CreateThread(function()
     end
 end)
 
-
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
     PlayerData = xPlayer
-    
 end)
-
 
 RegisterNetEvent("solde:argent")
 AddEventHandler("solde:argent", function(money, cash)
     PlayerMoney = tonumber(money)
 end)
-
-
-
 
 
 Citizen.CreateThread(function()
@@ -29,18 +23,12 @@ Citizen.CreateThread(function()
         Wait(2500)
     end
 end)
- 
- 
- 
-
 
 
 function ShowHelpNotification2(msg, thisFrame)
 	AddTextEntry('HelpNotification', msg)
 	DisplayHelpTextThisFrame('HelpNotification', false)
 end
-
-
 
 
 Citizen.CreateThread(function()
@@ -69,29 +57,7 @@ Citizen.CreateThread(function()
 end)
 
 
-Citizen.CreateThread(function()
-    while true do
-        local pPed = GetPlayerPed(-1)
-        local pCoords = GetEntityCoords(pPed)
-		local atm = false
-		local dst = GetDistanceBetweenCoords(pCoords, true)
-        for k,v in pairs(config.atm) do
-			if #(pCoords - v.pos) < 1.5 then
-                atm = true
-                ShowHelpNotification2("Appuyez sur ~INPUT_PICKUP~ pour ouvrir la gestion de votre compte.")
-				if IsControlJustReleased(0, 38) then
-					openT(v)
-				end
-            end
-        end
 
-        if atm then
-            Wait(1)
-        else
-            Wait(500)
-        end
-	end
-end)
 
 
 
@@ -137,12 +103,10 @@ function openP()
 	end
 end
 
---RMenu.Add('cmgblackjack', 'instructions', RageUI.CreateMenu("", "test",0,100,"casinoui_cards_blackjack", "casinoui_cards_blackjack"))
-
 -- Fleeca banque 
-local openBanque
+local openBanque = false
 RMenu.Add('rBanque', 'main', RageUI.CreateMenu(nil, "", 10,222,"fleeca", "interaction_bgd"))
-RMenu:Get('rBanque', 'main'):SetSubtitle("PRL V4")
+RMenu:Get('rBanque', 'main'):SetSubtitle("rBanque")
 RMenu:Get('rBanque', 'main').EnableMouse = false
 RMenu:Get('rBanque', 'main').Closed = function()
 	openBanque = false
@@ -207,15 +171,28 @@ Citizen.CreateThread(function()
 end)
 
 
+Citizen.CreateThread(function()
+    while true do
+        local pPed = GetPlayerPed(-1)
+        local pCoords = GetEntityCoords(pPed)
+		local atm = false
+		local dst = GetDistanceBetweenCoords(pCoords, true)
+        for k,v in pairs(config.atm) do
+			if #(pCoords - v.pos) < 1.5 then
+                atm = true
+                ShowHelpNotification2("Appuyez sur ~INPUT_PICKUP~ pour ouvrir la gestion de votre compte.")
+				if IsControlJustReleased(0, 38) then
+					openT(v)
+				end
+            end
+        end
 
-
-
-
-
-
-RegisterNetEvent("pharmacie") 
-AddEventHandler("pharmacie", function()
-    openPh()
+        if atm then
+            Wait(1)
+        else
+            Wait(500)
+        end
+	end
 end)
 
 
