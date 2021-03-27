@@ -83,3 +83,19 @@ AddEventHandler("PoserArgentP", function(money)
          TriggerClientEvent('esx:showNotification', _source, "Vous n'avez pas tout cette d\'argent !")
     end    
 end)
+
+
+
+RegisterServerEvent("bank:solde") 
+AddEventHandler("bank:solde", function(action, amount)
+     local _source = source
+     local xPlayer = ESX.GetPlayerFromId(_source)
+     local playerMoney = xPlayer.getBank()
+     if xPlayer ~= nil then
+          TriggerClientEvent("solde:argent", _source, playerMoney)
+     end
+end)
+
+
+
+
