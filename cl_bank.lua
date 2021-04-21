@@ -201,7 +201,7 @@ end)
 
 
 function retire_argentp()
-    local amount = KeyboardInput('PRL V4', ('Retirer de l\'argent à la Fleeca'), '', 20)
+    local amount = KeyboardInput('RShare', ('Retirer de l\'argent à la Fleeca'), '', 20)
 
     if amount ~= nil then
         amount = tonumber(amount)
@@ -215,7 +215,7 @@ end
 
 
 function depot_argentp()
-    local amount = KeyboardInput('PRL V4', ('Déposer de l\'argent à la Fleeca'), '', 20)
+    local amount = KeyboardInput('RShare', ('Déposer de l\'argent à la Fleeca'), '', 20)
 
     if amount ~= nil then
         amount = tonumber(amount)
@@ -243,7 +243,7 @@ end
 
 
 function depot_argent()
-    local amount = KeyboardInput('PRL V4', ('Déposer de l\'argent à la Fleeca'), '', 4)
+    local amount = KeyboardInput('RShare', ('Déposer de l\'argent à la Fleeca'), '', 4)
 
     if amount ~= nil then
         amount = tonumber(amount)
